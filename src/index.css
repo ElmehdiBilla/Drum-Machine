@@ -1,68 +1,154 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+    font-family: "Open Sans", sans-serif;
+    background-color: #222;
+    color: #eee;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* From range-input.css */
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+}
+input[type="range"]:focus {
+    outline: none;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+    background-color: #444444;
+    border-radius: 0.5rem;
+    height: 0.5rem;
+}
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: -4px;
+    background-color: #777777;
+    border-radius: 0.5rem;
+    height: 1rem;
+    width: 1rem;
+}
+input[type="range"]:focus::-webkit-slider-thumb {
+    outline: 3px solid #777777;
+    outline-offset: 0.125rem;
+}
+input[type="range"]::-moz-range-track {
+    background-color: #444444;
+    border-radius: 0.5rem;
+    height: 0.5rem;
+}
+input[type="range"]::-moz-range-thumb {
+    background-color: #777777;
+    border: none;
+    border-radius: 0.5rem;
+    height: 1rem;
+    width: 1rem;
+}
+input[type="range"]:focus::-moz-range-thumb {
+    outline: 3px solid #777777;
+    outline-offset: 0.125rem;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+/* From Uiverse.io by nikk7007 */
+.switch {
+    --false: #333;
+    --true: #666;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+input[type="checkbox"] {
+    appearance: none;
+    height: 2rem;
+    width: 3.5rem;
+    background-color: #444;
+    position: relative;
+    border-radius: 0.2em;
+    cursor: pointer;
+}
+input[type="checkbox"]::before {
+    content: "";
+    display: block;
+    height: 1.9em;
+    width: 1.9em;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: calc(1.9em / 2 + 0.3em);
+    background-color: var(--false);
+    border-radius: 0.2em;
+    transition: 0.3s ease;
+}
+
+input[type="checkbox"]:checked::before {
+    background-color: var(--true);
+    left: calc(100% - (1.9em / 2 + 0.3em));
+}
+
+#drum-machine {
+    display: flex;
+    min-width: 700px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+    padding: 1rem;
+    border-radius: 0.8rem;
+}
+
+.pad-bank {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: #333;
+    padding: calc(0.5rem + 5px) 0.5rem;
+    border-radius: 0.8rem;
+}
+.drum-pad {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    padding: 1rem;
+    width: 30%;
+    height: 100px;
+    background-color: #666;
+    color: #eee;
+    border: 2px solid #777;
+    border-radius: 0.8rem;
+    margin: 5px;
+    cursor: pointer;
+}
+.drum-pad:hover {
+    background-color: #555;
+    border-color: #666;
+}
+#controls {
+    width: 30%;
+    background-color: #333;
+    border-radius: 0.8rem;
+    margin-left: 10px;
+}
+#volume,
+#kit-switch,
+#display {
+    padding: 0.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+}
+#volume label,
+#kit-switch label {
+    margin-bottom: 0.2rem;
+}
+.drum-clicked {
+    transform: scale(0.9);
+    border: 2px solid #04a96d !important;
+    background-color: #038757 !important;
 }
